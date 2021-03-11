@@ -8,7 +8,7 @@ export default function Header(props) {
   const bg = { light: 'white', dark: 'gray.800' };
   return (
     <Box
-      pos="fixed"
+      // pos="fixed"
       as="header"
       top="0"
       zIndex="4"
@@ -31,13 +31,13 @@ export default function Header(props) {
           <Flex align="center" color="gray.500">
             {!user ? (
               <Box>
-                <Button size="sm" colorScheme="purple" onClick={signinWithGoogle}>
+                <Button size="sm" colorScheme="whatsapp" onClick={signinWithGoogle}>
                   Sign In
                 </Button>
               </Box>
             ) : (
               <Box>
-                <Button size="sm" colorScheme="purple" onClick={signout}>
+                <Button size="sm" colorScheme="whatsapp" onClick={signout}>
                   Sign Out
                 </Button>
               </Box>
@@ -45,7 +45,7 @@ export default function Header(props) {
             <IconButton
               aria-label={`Switch to ${colorMode === 'light' ? 'dark' : 'light'} mode`}
               variant="ghost"
-              colorScheme="purple"
+              colorScheme="whatsapp"
               ml="2"
               fontSize="20px"
               onClick={toggleColorMode}
