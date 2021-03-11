@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext, createContext } from 'react';
-import firebase from './Firebase';
+import firebase from '../lib/Firebase';
 
 if (!firebase.apps.length) {
   firebase.initializeApp(prod);
@@ -24,7 +24,7 @@ function useProvideAuth() {
       .auth()
       .signInWithPopup(new firebase.auth.GoogleAuthProvider())
       .then((response) => {
-        console.log(response);
+        console.log('signIn response:', response);
         setUser(response.user);
         return response.user;
       });

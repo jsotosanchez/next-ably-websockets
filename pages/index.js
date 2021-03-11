@@ -1,6 +1,6 @@
-import { Box, Button, Text, Container, Heading } from '@chakra-ui/react';
+import { Box, Button, Text, Container, Heading, Flex, Center } from '@chakra-ui/react';
 import Head from 'next/head';
-import { useAuth } from '../lib/AuthProvider';
+import { useAuth } from '@/components/AuthProvider';
 import { useRouter } from 'next/router';
 
 export default function IndexPage() {
@@ -24,15 +24,24 @@ export default function IndexPage() {
               Co-Space allows you to hang out with your friends just like before. Missing those pre-pandemic meet ups?
               We got you covered!
             </Text>
-            <Box mt="6">
-              <Button
-                size="lg"
-                colorScheme="teal"
-                onClick={() => auth.signinWithGoogle().then(() => router.push('home'))}
-              >
-                Let's Get Started
-              </Button>
-            </Box>
+            <Center>
+              <Flex>
+                <Box mt="6" mr="3">
+                  <Button
+                    size="lg"
+                    colorScheme="purple"
+                    onClick={() => auth.signinWithGoogle().then(() => router.push('home'))}
+                  >
+                    Sign me up!
+                  </Button>
+                </Box>
+                <Box mt="6" ml="3">
+                  <Button size="lg" colorScheme="purple" variant="ghost" onClick={() => router.push('home')}>
+                    I wanna see it first
+                  </Button>
+                </Box>
+              </Flex>
+            </Center>
           </Box>
         </Container>
       </Box>
