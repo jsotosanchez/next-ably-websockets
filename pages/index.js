@@ -29,14 +29,14 @@ export default function IndexPage() {
                 <Box mt="6" mr="3">
                   <Button
                     size="lg"
-                    colorScheme="purple"
+                    colorScheme="whatsapp"
                     onClick={() => auth.signinWithGoogle().then(() => router.push('home'))}
                   >
-                    Sign me up!
+                    Sign me in!
                   </Button>
                 </Box>
                 <Box mt="6" ml="3">
-                  <Button size="lg" colorScheme="purple" variant="ghost" onClick={() => router.push('home')}>
+                  <Button size="lg" colorScheme="whatsapp" variant="ghost" onClick={() => router.push('home')}>
                     I wanna see it first
                   </Button>
                 </Box>
