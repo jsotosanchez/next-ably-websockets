@@ -1,13 +1,13 @@
 import Ably from 'ably/promises';
 import { useEffect } from 'react';
-
+import { ABLY_NEW_MESSAGE } from '../constants';
 const ably = new Ably.Realtime.Promise({ authUrl: '/api/createAblyToken' });
 
 export function useChannel(channelName, callbackOnMessage) {
   const channel = ably.channels.get(channelName);
 
   const onMount = () => {
-    channel.subscribe((msg) => {
+    channel.subscribe(ABLY_NEW_MESSAGE, (msg) => {
       callbackOnMessage(msg);
     });
   };
