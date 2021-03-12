@@ -7,6 +7,8 @@ export function useChannel(channelName, callbackOnMessage) {
   const channel = ably.channels.get(channelName);
 
   const onMount = () => {
+    console.log('mounting component');
+
     channel.subscribe(ABLY_NEW_MESSAGE, (msg) => {
       callbackOnMessage(msg);
     });
