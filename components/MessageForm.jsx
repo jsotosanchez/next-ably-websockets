@@ -6,7 +6,13 @@ export default function MessageForm({ handleSubmit }) {
   const [messageText, setMessageText] = useState('');
 
   return (
-    <Box as="form" onSubmit={handleSubmit}>
+    <Box
+      as="form"
+      onSubmit={(e) => {
+        handleSubmit(e, messageText);
+        setMessageText('');
+      }}
+    >
       <FormControl id="text">
         <InputGroup>
           <Input
