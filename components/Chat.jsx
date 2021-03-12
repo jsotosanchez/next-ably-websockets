@@ -1,12 +1,29 @@
 import React, { useState } from 'react';
-import { Box, FormControl, InputGroup, Input, Button, InputRightAddon } from '@chakra-ui/react';
+import {
+  Box,
+  FormControl,
+  InputGroup,
+  Input,
+  Button,
+  InputRightAddon,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+} from '@chakra-ui/react';
 import { ArrowUpIcon } from '@chakra-ui/icons';
 import { useChannel } from '@/hooks/useChannel';
 import { useAuth } from './AuthProvider';
 import ChatBox from './ChatBox';
+import { ABLY_NEW_MESSAGE } from '../constants';
 
 export default function Chat({ channelName, ...rest }) {
   const { user } = useAuth();
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const [messageText, setMessageText] = useState('');
   const [chatHistory, setChatHistory] = useState([]);
 
@@ -18,7 +35,7 @@ export default function Chat({ channelName, ...rest }) {
 
   const sendChatMessage = (messageText) => {
     channel.publish({
-      name: 'new-message',
+      name: ABLY_NEW_MESSAGE,
       data: { messageText, user: { email: user?.email, name: user?.displayName } },
     });
     setMessageText('');
@@ -27,9 +44,13 @@ export default function Chat({ channelName, ...rest }) {
   const onFormSubmit = (event) => {
     event.preventDefault();
     if (!user) {
-      alert('you need to be logged in');
+      onOpen();
       return;
     }
+    if (!messageText) {
+      return;
+    }
+
     sendChatMessage(messageText);
   };
 
@@ -66,6 +87,20 @@ export default function Chat({ channelName, ...rest }) {
           </InputGroup>
         </FormControl>
       </Box>
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Not too fast!</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>You need to sign up to participate in the chat</ModalBody>
+          <ModalFooter>
+            <Button colorScheme="whatsapp" mr={3} onClick={onClose}>
+              No, thanks.
+            </Button>
+            <Button variant="ghost">Sign in</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </Box>
   );
 }

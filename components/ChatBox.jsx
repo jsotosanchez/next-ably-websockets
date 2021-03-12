@@ -4,10 +4,12 @@ import { useAuth } from './AuthProvider';
 const Message = ({ message, authorIsMe, senderName, colorMode, messagebg }) => (
   <>
     <Flex direction={authorIsMe ? 'row-reverse' : 'row'} p="3px" my="1px" mx="5px">
-      <Box p="3px 20px 3px 20px" borderRadius="20px" background={messagebg[colorMode]} colorSC>
-        <Text fontWeight="bold" fontSize="sm" color={colorMode === 'light' ? '#000000' : '#FFFFFF'}>
-          {senderName}:
-        </Text>
+      <Box p="3px 20px 3px 20px" borderRadius="20px" background={messagebg[colorMode]}>
+        {!authorIsMe && (
+          <Text fontWeight="bold" fontSize="sm" color={colorMode === 'light' ? '#000000' : '#FFFFFF'}>
+            {senderName}:
+          </Text>
+        )}
         <Text fontWeight="semibold" color={colorMode === 'light' ? '#000000' : '#FFFFFF'}>
           {message}
         </Text>
