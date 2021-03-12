@@ -26,7 +26,7 @@ export default function ChatBox({ messages }) {
   const { user } = useAuth();
 
   return (
-    <Box bg={bg[colorMode]}>
+    <Box bg={bg[colorMode]} minH="30em" maxH="30em" overflowY="scroll">
       {messages &&
         messages.map((msg, index) => (
           <Message
