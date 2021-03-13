@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import {
   Box,
   Button,
@@ -28,11 +28,11 @@ export default function Chat({ channelName }) {
     setChatHistory([...history, newMessage]);
   };
 
-  const callbackGetHistory = ({ items }) => {
-    console.log('items on history', items);
-    const oldMessages = items.map(({ data: { messageText, user } }) => ({ messageText, user }));
-    setChatHistory([...oldMessages]);
-  };
+  // const callbackGetHistory = ({ items }) => {
+  //   console.log('items on history', items);
+  //   const oldMessages = items.map(({ data: { messageText, user } }) => ({ messageText, user }));
+  //   setChatHistory([...oldMessages]);
+  // };
 
   const [channel] = useChannel(channelName, callbackOnMessage);
 
