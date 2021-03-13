@@ -16,8 +16,10 @@ import { useAuth } from './AuthProvider';
 import ChatBox from './ChatBox';
 import { ABLY_NEW_MESSAGE } from '../constants';
 import MessageForm from './MessageForm';
+import { useChannelContext } from './ChannelProvider';
 
-export default function Chat({ channelName }) {
+export default function Chat() {
+  const { channel: channelName } = useChannelContext();
   const { user, signinWithGoogle } = useAuth();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [chatHistory, setChatHistory] = useState([]);
@@ -27,12 +29,6 @@ export default function Chat({ channelName }) {
     const newMessage = { messageText, user };
     setChatHistory([...history, newMessage]);
   };
-
-  // const callbackGetHistory = ({ items }) => {
-  //   console.log('items on history', items);
-  //   const oldMessages = items.map(({ data: { messageText, user } }) => ({ messageText, user }));
-  //   setChatHistory([...oldMessages]);
-  // };
 
   const [channel] = useChannel(channelName, callbackOnMessage);
 
