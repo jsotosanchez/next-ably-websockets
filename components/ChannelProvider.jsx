@@ -12,7 +12,7 @@ export const useChannelContext = () => {
 };
 
 const useProvideChannel = () => {
-  const [channel, setChannel] = useState('');
+  const [channel, setChannel] = useState('entrance');
 
   return { channel, setChannel };
 };

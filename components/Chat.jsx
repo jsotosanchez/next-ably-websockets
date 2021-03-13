@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   Button,
@@ -51,6 +51,10 @@ export default function Chat() {
 
     sendChatMessage(message);
   };
+
+  useEffect(() => {
+    setChatHistory([]);
+  }, [channel]);
 
   return (
     <Box>
