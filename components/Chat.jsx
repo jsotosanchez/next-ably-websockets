@@ -18,7 +18,7 @@ import { ABLY_NEW_MESSAGE } from '../constants';
 import MessageForm from './MessageForm';
 
 export default function Chat({ channelName }) {
-  const { user } = useAuth();
+  const { user, signinWithGoogle } = useAuth();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [chatHistory, setChatHistory] = useState([]);
 
@@ -70,7 +70,9 @@ export default function Chat({ channelName }) {
             <Button colorScheme="whatsapp" mr={3} onClick={onClose}>
               No, thanks.
             </Button>
-            <Button variant="ghost">Sign me in!</Button>
+            <Button variant="ghost" onClick={() => signinWithGoogle().then(onClose())}>
+              Sign me in!
+            </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
