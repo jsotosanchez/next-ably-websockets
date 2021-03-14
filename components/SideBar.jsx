@@ -2,10 +2,7 @@ import { Button } from '@chakra-ui/button';
 import { VStack } from '@chakra-ui/layout';
 import React from 'react';
 import { useChannelContext } from './ChannelProvider';
-
-const ABLY_CHANNEL_ENTRANCE = 'entrance';
-const ABLY_CHANNEL_LIVING = 'living';
-const ABLY_CHANNEL_BACKYARD = 'backyard';
+import { ABLY_CHANNEL_LIVING, ABLY_CHANNEL_ENTRANCE, ABLY_CHANNEL_BACKYARD } from '../constants';
 
 export default function SideBar() {
   const { channel, setChannel } = useChannelContext();
