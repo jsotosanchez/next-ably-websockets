@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { useAuth } from '@/components/AuthProvider';
 import { useRouter } from 'next/router';
 
-export default function IndexPage() {
+export default () => {
   const auth = useAuth();
   const router = useRouter();
 
@@ -16,7 +16,7 @@ export default function IndexPage() {
       <Box as="section" pt={40} pb={24}>
         <Container>
           <Box maxW="xl" mx="auto" textAlign="center">
-            <Heading as="h1" size="xl" fontWeight="black">
+            <Heading as="h1" size="xl" fontWeight="black" name="heading">
               Hang out with your friends!
             </Heading>
 
@@ -47,4 +47,4 @@ export default function IndexPage() {
       </Box>
     </Box>
   );
-}
+};
