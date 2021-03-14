@@ -16,7 +16,7 @@ export default () => {
       <Box as="section" pt={40} pb={24}>
         <Container>
           <Box maxW="xl" mx="auto" textAlign="center">
-            <Heading as="h1" size="xl" fontWeight="black" name="heading">
+            <Heading as="h1" size="xl" fontWeight="black">
               Hang out with your friends!
             </Heading>
 
@@ -31,12 +31,19 @@ export default () => {
                     size="lg"
                     colorScheme="whatsapp"
                     onClick={() => auth.signinWithGoogle().then(() => router.push('home'))}
+                    name="signin"
                   >
                     Sign me in!
                   </Button>
                 </Box>
                 <Box mt="6" ml="3">
-                  <Button size="lg" colorScheme="whatsapp" variant="ghost" onClick={() => router.push('home')}>
+                  <Button
+                    size="lg"
+                    colorScheme="whatsapp"
+                    variant="ghost"
+                    onClick={() => router.push('home')}
+                    name="seeFirst"
+                  >
                     I wanna see it first
                   </Button>
                 </Box>
