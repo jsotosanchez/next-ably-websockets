@@ -10,7 +10,7 @@ export default () => {
   return (
     <Box h="100vh">
       <Head>
-        <title>Co-Space</title>
+        <title>Co-Spacee</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Box as="section" pt={40} pb={24}>
