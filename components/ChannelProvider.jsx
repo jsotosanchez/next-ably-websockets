@@ -1,4 +1,5 @@
 import React, { useState, useContext, createContext } from 'react';
+import { ABLY_CHANNEL_ENTRANCE } from '../constants';
 
 const channelContext = createContext();
 
@@ -12,7 +13,7 @@ export const useChannelContext = () => {
 };
 
 const useProvideChannel = () => {
-  const [channel, setChannel] = useState('entrance');
+  const [channel, setChannel] = useState(ABLY_CHANNEL_ENTRANCE);
 
   return { channel, setChannel };
 };
