@@ -14,7 +14,6 @@ describe('Index page', () => {
     expectedSignIn.mockResolvedValue('');
     useAuth.mockReturnValue({
       signinWithGoogle: expectedSignIn,
-      userId: 123,
     });
     useRouter.mockReturnValue({ push: expectedRouterPush });
   });
