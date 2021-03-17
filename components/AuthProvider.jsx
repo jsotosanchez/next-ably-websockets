@@ -24,7 +24,6 @@ function useProvideAuth() {
       .auth()
       .signInWithPopup(new firebase.auth.GoogleAuthProvider())
       .then((response) => {
-        console.log('signIn response:', response);
         setUser(response.user);
         return response.user;
       });

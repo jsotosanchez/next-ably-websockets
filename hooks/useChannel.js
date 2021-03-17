@@ -4,12 +4,9 @@ import { ABLY_NEW_MESSAGE } from '../constants';
 const ably = new Ably.Realtime.Promise({ authUrl: '/api/createAblyToken' });
 
 export function useChannel(channelName, callbackOnMessage) {
-  console.log(channelName);
   const channel = ably.channels.get(channelName);
 
   const onMount = () => {
-    console.log('mounting component');
-
     channel.subscribe(ABLY_NEW_MESSAGE, (msg) => {
       callbackOnMessage(msg);
     });
